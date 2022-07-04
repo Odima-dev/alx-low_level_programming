@@ -1,6 +1,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+
+/**
+ * main - entry point
+ *
+ * Return:always return 0
+ *
+ */
+
+
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
