@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - entry 
- *  
+ * 
  * Return: alway returns 0
  *
  */
@@ -16,7 +16,7 @@ int main(void)
 		{
 			putchar(',');
 			putchar(' ');
-		}		
+		}	
 		n++;
 	}
 	putchar('\n');
