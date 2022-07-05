@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
- * main - entry point
- *
+ * main - entry 
+ *  
  * Return: alway returns 0
  *
  */
@@ -15,8 +15,8 @@ int main(void)
 		if (n != '9')
 		{
 			putchar(',');
-			putchar(' ');
-		}			
+																				putchar(' ');
+		}		
 		n++;
 	}
 	putchar('\n');
