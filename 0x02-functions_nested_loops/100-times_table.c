@@ -1,35 +1,48 @@
 #include "main.h"
-#include "6-abs.c"
-#include <stdio.h>
 /**
- * print_times_table - print multiplication table up to n
- * @n: integer argument
+ * Print_times_table - print multiplication table up to n
+ * @n: the integer
  */
 void print_times_table(int n)
 {
-	int i;
+	int row;
+	int column;
+	int product;
 
-	if (n > 98}
+	if (n >= 0 && n <= 15)
 	{
-		for (i = n; i >= 98; i--)
+		for (row = 0; row <= n; row++)
 		{
-			printf("%d", i);
-			if (i != 98)
+			for (column = 0; column <= n; column++)
 			{
-				printf(", ");
+				product = (row * column);
+				if (column == 0)
+					_putchar('0' + product);
+				else
+				{
+					_putchar(',');
+					_putchar(' ');
+					if (product <= 9)
+					{
+						_putchar(' ');
+						_putchar(' ');
+						_putchar('0' + product);
+					}
+					else if (product > 9 && product < 100)
+					{
+						_putchar(' ');
+						_putchar('0' + (product / 10));
+						_putchar('0' + (product % 10));
+					}
+					else if (product >= 100)
+					{
+						_putchar('0' + (product / 100));
+						_putchar('0' + ((product / 10) % 10));
+						_putchar('0' + (product % 10));
+					}
+				}
 			}
-		}
-
-	} else
-	{
-		for (i = n; i <= 98; i++)
-		{
-			printf("%d", i);
-			if (i != 98)
-			{
-				printf(", ");
-			}
+			_putchar('\n');
 		}
 	}
-	printf("\n");
 }
