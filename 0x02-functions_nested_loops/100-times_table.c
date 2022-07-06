@@ -1,4 +1,6 @@
 #include "main.h"
+#include "6-abs.c"
+#include <stdio.h>
 /**
  * print_times_table - print multiplication table up to n
  * @n: integer argument
