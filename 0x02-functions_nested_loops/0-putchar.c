@@ -4,7 +4,7 @@
  * main - entry point
  * should print _putchar then a new line
  * Return: always return 0
- * 
+ *
  */
 int main(void)
 {
