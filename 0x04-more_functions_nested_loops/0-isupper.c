@@ -1,8 +1,9 @@
 #include "main"
+
 /**
  * _isupper - to check for uppercase
  * @c: character that is checked
- * Return: either 1 or 0
+ * Return: give either 1 or 0
  */
 int _isupper(int c)
 {
