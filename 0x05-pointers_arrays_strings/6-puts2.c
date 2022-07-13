@@ -1,4 +1,4 @@
-#include "main,h"
+#include "main.h"
 #include "2-strlen.c"
 
 /**
@@ -8,7 +8,7 @@
 
 void puts2(char *str)
 {
-	int i;
+	int i = 0;
 
 	for (i = 0; i < _strlen(str); i++)
 	{
