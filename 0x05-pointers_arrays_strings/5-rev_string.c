@@ -1,20 +1,23 @@
 #include "main.h"
-#include "2-strlen.c"
 
 /**
- * _strlen - returns the length of a string
- * @s: string
+ * _strlen - return strings length
+ * @s: string to be returned
+ * @Return: length
  */
+
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
 
 void rev_string(char *s)
 {
-	int i;
-	char t;
-
-	for (i = 0; i < _strlen(s) / 2; i++)
-	{
-		t = s[i];
-		s[i] = s[_strlen(s) - i - 1];
-		s[_strlen(s) - i - 1] = t;
-	}
-}
+	
