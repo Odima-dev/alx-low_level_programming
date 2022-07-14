@@ -2,11 +2,11 @@
 
 /**
  * cap_string - perform capitalization
- * @s: manipulated string
+ * @n: manipulated string
  * Return: the sting
  */
 
-char *cap_string(char *s)
+char *cap_string(char *n)
 {
 	int i;
 
