@@ -8,17 +8,36 @@
 
 char *cap_string(char *s)
 {
-	int i = 0;
+	int i;
 
-	if (s[i] >= 'a' && s[i] <= 'z')
-		s[i] = s[i] - 'a' + 'A';
-	i++;
+	i = 0;
 
-	while (s[i] != '\0')
+	if (n[0] >= 'a' && n[0] <= 'z')
 	{
-		if ((s[i] >= 'a' && s[i] <= 'z') && (s[i - 1] == ',' || s[i - 1] == ';' || s[i - 1] == '.' || s[i - 1] == '!' || s[i - 1] == '?' || s[i - 1] == '"' || s[i - 1] == '(' || s[i - 1] == ')' || s[i - 1] == '{' || s[i - 1] == '}' || s[i - 1] == ' ' || s[i - 1] == '\t' || s[i - 1] == '\n'))
-			s[i] = s[i] - 'a' + 'A';
-		i++;
+		n[0] = n[0] - 32;
 	}
-	return (s);
+	for (i = 0; n[i] != '\0'; i++)
+	{
+		switch (n[i])
+		{
+			case ',':
+			case ';':
+			case '.':
+			case '!':
+			case '?':
+			case '"':
+			case '(':
+			case ')':
+			case '{':
+			case '}':
+			case ' ':
+			case '\n':
+			case '\t':
+				if (n[i + 1] > 96 && n[i + 1] < 123)
+				{
+					n[i + 1] = n[i + 1] - 32;
+				}
+		}
+	}
+	return (n);
 }
