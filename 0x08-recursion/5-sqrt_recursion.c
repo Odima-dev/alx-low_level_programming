@@ -18,6 +18,12 @@ int find_root(int n, int root)
 	return (find_root(n, root + 1));
 }
 
+/**
+ * _sqrt_recursion - calculate squareroot of n
+ * @n: the integer
+ * Return: square root or -1
+ */
+
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
