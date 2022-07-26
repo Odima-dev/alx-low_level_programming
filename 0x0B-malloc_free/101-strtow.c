@@ -1,39 +1,98 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
- * helper - helps function
- * @word: wordcount
- * @len: length
+ * len - return length
  * @str: string
- * @s: array
- * Return: char value
+ * Return: string length
  */
 
-char **helper(int word, int len, char *str, char **s)
+int len(char *str)
 {
-	int i, k, j;
+	int len = 0;
 
-	j = 0;
-	for (i = 0; i < word; i++)
+	if (str != NULL)
 	{
-		k = 0;
-		for (; j < len; j++)
+		while (str[len])
+			len++;
+	}
+	return (len);
+}
+
+/**
+ * num_words - count words
+ * @str: the string
+ * Return: word count
+ */
+
+int num_words(char *str)
+{
+	int i = 0, words = 0;
+
+	while (i <= len(str))
+	{
+		if ((str[i] != ' ') && (str[i] != '\0'))
 		{
-			if (str[0] != ' ' || str[j] != ' ')
+			i++;
+		}
+		else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
+		{
+			words += 1;
+			i++;
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (words);
+}
+
+/**
+ * strtow - split string to words
+ * @str: the string
+ * Return: pointer
+ */
+
+char **strtow(char *str)
+{
+	char **split;
+	int i, j = 0, temp = 0, size = 0, words = num_words(str);
+
+	if (words == 0)
+		return (NULL);
+	split = (char **)malloc(sizeof(char *) * (words + 1));
+	if (split != NULL)
+	{
+		for (i = 0; i <= len(str) && words; i++)
+		{
+			if ((str[i] != ' ') && (str[i] != '\0'))
+				size++;
+			else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
 			{
-				s[i][k] = str[j];
-				k++;
-			}
-			if (j != 0 && str[j] == ' ' && str[j - 1] != ' ')
-			{
-				j++;
-				break;
+				split[j] = (char *)malloc(sizeof(char) * size + 1);
+				if (split[j] != NULL)
+				{
+					while (temp < size)
+					{
+						split[j][temp] = str[(i - size) + temp];
+						temp++;
+					}
+					split[j][temp] = '\0';
+					size = temp = 0;
+					j++;
+				}
+				else
+				{
+					while (j-- >= 0)
+						free(split[j]);
+					free(split);
+					return (NULL);
+				}
 			}
 		}
-		s[i][k + 1] = '\0';
+		split[words] = NULL;
+		return (split);
 	}
-	s[word + 1] = NULL;
-	return (s);
+	else
+		return (NULL);
 }
