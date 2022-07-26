@@ -3,43 +3,57 @@
 #include <stdlib.h>
 
 /**
- * argstostr - main function
- * @ac: count argument
- * @av: argument array
- * Return: char value
+ * _strlen - give string length
+ * @s: the string
+ * Return: length
+ */
+
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+		len++, s++;
+
+	return (len);
+}
+
+/**
+ * argstostr - performs concanation
+ * @ac: argc
+ * @av: arguments
+ * Return: array pointer
  */
 
 char *argstostr(int ac, char **av)
 {
-	int size;
 	char *s;
-	int i, j, k;
+	int len = 0, i, j, k = 0;
+
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
-			size++;
+		len += _strlen(av[i]);
 	}
-	size += (ac + 1);
-	s = malloc(sizeof(char) * size);
-	if (s == NULL)
-		return (NULL);
-	k = 0;
+	len += (ac + 1);
 
+	s = malloc(len * sizeof(char));
+
+	if (s == NULL)
+	{
+		free(s);
+		return (NULL);
+	}
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
+		for (j = 0; j < _strlen(av[i]); j++)
 		{
-			s[k] = av[i][j];
-			k++;
+			s[k++] = av[i][j];
 		}
-		s[k] = '\n';
-		k++;
+		s[k++] = '\n';
 	}
-	s[k] = '\0';
-
 	return (s);
 }
