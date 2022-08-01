@@ -3,83 +3,47 @@
 #include "dog.h"
 
 /**
- * len - bring string length
- * @str: the string
- * Return: leght
- */
-
-int len(char *str)
-{
-	int i;
-
-	for (i = 0; *(str + i); i++)
-		;
-
-	return (1);
-}
-
-/**
- * strcpy - copy string scr points
- * @src: source of copy
- * @dest: destination for copy
- * Return: copy of original
- */
-
-char *strcpy(char *dest, char *src)
-{
-	int i;
-
-	for (i = 0; i <= len(src); i++)
-		dest[i] = src[i];
-	return (dest);
-}
-
-/**
- * new_dog - create new dog struct
- * @name: participant
- * @age: participant
- * @owner: aprticipant
- * Return: intitialized instance
+ * new_dog - new dog
+ * @name: name the dog
+ * @age: dogs age
+ * @owner: dog owner
+ * Return: newdog
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *dog1;
-	char *copy_of_name;
-	char *copy_of_owner;
+	int i = 0, j = 0, k;
+	dog_t *doge;
 
-	dog1 = malloc(sizeof(dog_t));
-	if (dog1 == NULL)
+	while (name[i] != '\0')
+		i++;
+	while (owner[j] != '\0')
+		j++;
+	doge = malloc(sizeof(dog_t));
+	if (doge == NULL)
+	{
+		free(doge);
 		return (NULL);
-
-	dog1->age = age;
-
-	if (name != NULL)
-	{
-		copy_of_name = malloc(len(name) + 1);
-		if (copy_of_name == NULL)
-		{
-			free(dog1);
-			return (NULL);
-		}
-		dog1->name = strcpy(copy_of_name, name);
 	}
-	else
-		dog1->name = NULL;
-
-	if (owner != NULL)
+	doge->name = malloc(i * sizeof(doge->name));
+	if (doge->name == NULL)
 	{
-		copy_of_owner = malloc(len(owner) + 1);
-		if (copy_of_owner == NULL)
-		{
-			free(copy_of_name);
-			free(dog1);
-			return (NULL);
-		}
-		dog1->owner = strcpy(copy_of_owner, owner);
+		free(doge->name);
+		free(doge);
+		return (NULL);
 	}
-	else
-		dog1->owner = NULL;
-
-	return (dog1);
+	for (k = 0; k <= i; k++)
+		doge->name[k] = name[k];
+	doge->age = age;
+	doge->owner = malloc(j * sizeof(doge->owner));
+	if (doge->owner == NULL)
+	{
+		free(doge->owner);
+		free(doge->name);
+		free(doge);
+		return (NULL);
+	}
+	for (k = 0; k <= j; k++)
+		doge->owner[k] = owner[k];
+	return (doge);
 }
