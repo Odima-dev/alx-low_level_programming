@@ -1,4 +1,4 @@
- "main.h"
+#include "main.h"
 
 /**
  * clear_bit - clear bit to 0 at given index
@@ -21,4 +21,4 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	*n = (*n & mask);
 
 	return (1);
-}	
+}
